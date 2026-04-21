@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0" />
+  <title>Магазин — Корзина</title>
+  <link rel="stylesheet" href="/styles/index.css" />
+  <link rel="stylesheet" href="/styles/basket.css" />
+</head>
+<body>
+
+    <%- include('blocks/header') -%>
+
+  <main class="main">
+    <section class="cart">
+      <div class="container">
+        <h3>Ваша корзина</h3>
+
+        <div class="cart-list">
+          <!-- Товар 1 -->
+          <div class="cart-item">
+            <img src="https://via.placeholder.com/120" alt="Товар 1" />
+            <div class="cart-info">
+              <h4>Товар 1</h4>
+              <p class="price">999 ₽</p>
+              <div class="qty">
+                <button class="qty-btn">−</button>
+                <span class="qty-value">1</span>
+                <button class="qty-btn">+</button>
+              </div>
+            </div>
+            <button class="btn remove-btn">Удалить</button>
+          </div>
+
+          <!-- Товар 2 -->
+          <div class="cart-item">
+            <img src="https://via.placeholder.com/120" alt="Товар 2" />
+            <div class="cart-info">
+              <h4>Товар 2</h4>
+              <p class="price">1 499 ₽</p>
+              <div class="qty">
+                <button class="qty-btn">−</button>
+                <span class="qty-value">2</span>
+                <button class="qty-btn">+</button>
+              </div>
+            </div>
+            <button class="btn remove-btn">Удалить</button>
+          </div>
+        </div>
+
+        <div class="cart-total">
+          <h4>Итого: <span class="total-amount">3 497 ₽</span></h4>
+          <button class="btn checkout-btn">Оформить заказ</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <%- include('blocks/footer') -%>
+
+</body>
+</html>

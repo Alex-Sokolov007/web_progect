@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0" />
+  <title>Маленький интернет‑магазин</title>
+  <link rel="stylesheet" href="/styles/index.css" />
+</head>
+<body>
+
+    <%- include('blocks/header') -%>
+
+  <main class="main">
+    <section class="hero">
+      <div class="container">
+        <h2>Добро пожаловать в наш магазин</h2>
+        <p>Найдите лучшие товары по выгодным ценам</p>
+      </div>
+    </section>
+
+    <section class="products">
+      <div class="container">
+        <h3>Популярные товары</h3>
+
+      <% for(i=0; i<len; i++){ %>
+        <div class="product-list">
+          <div class="product-card">
+            <img src="<%=img %>" alt="Товар 1" />
+            <h4><%= name %></h4>
+            <p class="price"><%= prise %> ₽</p>
+            <button class="btn">В корзину</button>
+          </div>
+      <% } %>
+
+
+          
+          <div class="product-card">
+            <img src="https://media1.tenor.com/m/xPDFon_iFZ0AAAAC/%D1%80%D1%8B%D0%B1%D0%B0-%D1%80%D1%8B%D0%B1%D0%B0-%D0%BA%D1%80%D1%83%D1%82%D0%B8%D1%82%D1%81%D1%8F.gif" alt="Товар 2" />
+            <h4>Товар 2</h4>
+            <p class="price">1 499 ₽</p>
+            <button class="btn">В корзину</button>
+          </div>
+          <div class="product-card">
+            <img src="https://c.tenor.com/KotUIP7Y4FsAAAAd/tenor.gif" alt="Товар 3" />
+            <h4>Товар 3</h4>
+            <p class="price">799 ₽</p>
+            <button class="btn">В корзину</button>
+            <a href="/item/3"><button class="btn">О товаре</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+    <%- include('blocks/footer') -%>
+
+</body>
+</html>
