@@ -9,10 +9,18 @@ class Index_controler{
         console.log(data_db.length)
         const data = {
             len: data_db.length,
-            name: data_db[0].name,
-            prise: data_db[0].prise,
-            img: data_db[0].image
+            id: [],
+            name: [],
+            prise: [],
+            img: []
         }
+        for(let i=0; i<data_db.length; i++){
+            data.name.push(data_db[i].name)
+            data.prise.push(data_db[i].prise)
+            data.img.push(data_db[i].image)
+            data.id.push(data_db[i].id)
+        }
+        
         res.render("index", data)
 
     }

@@ -84,11 +84,31 @@ async function getAll(table_name = 'users') {
   });
 }
 
+function update(productId, imageUrl) {
+  const sql = `
+    UPDATE products
+    SET image = ?
+    WHERE id = ?
+  `;
+
+  db.run(sql, [imageUrl, productId], function (err) {
+    if (err) {
+      console.error("Ошибка изменения image:", err.message);
+    } else if (this.changes === 0) {
+      console.warn(`Товар с id=${productId} не найден`);
+    } else {
+      console.log(`Изображение товара id=${productId} обновлено`);
+    }
+  });
+}
+
 // createTable2()
 // addQwery('Иван', "Золо", 88005553535)
-// addQwery2('Сумашедшая рыба', 100, 'https://c.tenor.com/Uo3_qflEe1sAAAAC/tenor.gif')
+// addQwery2('Рыба прилипала', 480, 'https://media.tenor.com/4MkvKNJCjicAAAAM/fish-sucker.gif')
 // addQwery2('рыба', 100.0, 'картинка')
 
-// console.log(getAll('products'))
-
+// console.log(await getAll('products'))
+// addQwery2("Рыба студент", 10500, "https://c.tenor.com/KotUIP7Y4FsAAAAd/tenor.gif")
 export default getAll
+// update(2, "https://media.tenor.com/6m3I1g_WiokAAAAM/fish-spin-sha.gif")
+// console.log(await getAll('products'))
