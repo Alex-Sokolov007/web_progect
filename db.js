@@ -93,7 +93,7 @@ async function getAll(table_name = 'users', id = null) {
 function update(productId, imageUrl) {
   const sql = `
     UPDATE products
-    SET image = ?
+    SET name = ?
     WHERE id = ?
   `;
 
@@ -108,13 +108,31 @@ function update(productId, imageUrl) {
   });
 }
 
+function deleteProduct(productId) {
+  const sql = `
+    DELETE FROM products
+    WHERE id = ?
+  `;
+
+  db.run(sql, [productId], function (err) {
+    if (err) {
+      console.error("Ошибка удаления товара:", err.message);
+    } else if (this.changes === 0) {
+      console.warn(`Товар с id=${productId} не найден`);
+    } else {
+      console.log(`Товар с id=${productId} успешно удалён`);
+    }
+  });
+}
+
 // createTable2()
 // addQwery('Иван', "Золо", 88005553535)
 // addQwery2('Рыба прилипала', 480, 'https://media.tenor.com/4MkvKNJCjicAAAAM/fish-sucker.gif')
 // addQwery2('рыба', 100.0, 'картинка')
 
 // console.log(await getAll('products'))
-// addQwery2("Рыба студент", 10500, "https://c.tenor.com/KotUIP7Y4FsAAAAd/tenor.gif")
+// addQwery2("Разработчик при ложения", 100, "https://media.tenor.com/rW2YcU3S83AAAAAM/enbabyfazball-fish.gif")
 export default getAll
-// update(2, "https://media.tenor.com/6m3I1g_WiokAAAAM/fish-spin-sha.gif")
+// update(7, "Рыба репер")
+// deleteProduct(9)
 // console.log(await getAll('products'))

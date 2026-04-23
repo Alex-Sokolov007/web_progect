@@ -7,7 +7,7 @@ class Item_controler{
         const id = req.params.id
         const data_db = await getAll("products", id)
         console.log(data_db)
-        res.render('item')
+        res.render('item', data_db[0])
     }
     async post1(req, res){
         console.log("post запрос")

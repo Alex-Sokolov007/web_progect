@@ -15,32 +15,12 @@
     <section class="product-detail">
       <div class="container">
         <div class="product-card big">
-          <img src="https://via.placeholder.com/400x400" alt="Товар" />
+          <img src="<%= image %>" alt="Товар" />
           <div class="product-info">
-            <h2>Название товара</h2>
-            <p class="product-description">
-              Подробное описание товара. Здесь может быть информация о материале, размерах,
-              комплектации, особенностях эксплуатации и другие детали.
-            </p>
-            <p class="price">2 499 ₽</p>
-            <div class="options">
-              <label>
-                Цвет:
-                <select>
-                  <option>Красный</option>
-                  <option>Синий</option>
-                  <option>Чёрный</option>
-                </select>
-              </label>
-              <label>
-                Размер:
-                <select>
-                  <option>S</option>
-                  <option>M</option>
-                  <option>L</option>
-                </select>
-              </label>
-            </div>
+            <h2><%= name %></h2>
+            
+            <p class="price"><%= prise %> ₽</p>
+            
             <div class="actions">
               <button class="btn cart-btn">В корзину</button>
               <button class="btn fav-btn">В избранное</button>
