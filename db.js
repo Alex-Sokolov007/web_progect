@@ -70,9 +70,15 @@ function addQwery2(name, prise, image) {
   });
 }
 
-async function getAll(table_name = 'users') {
+async function getAll(table_name = 'users', id = null) {
   return new Promise((resolve, reject) => {
-    const sql = `SELECT * FROM ${table_name}`;
+  let sql = ''
+  if(id == null){
+    sql = `SELECT * FROM ${table_name}`;
+  }
+  else{
+    sql = `SELECT * FROM ${table_name} WHERE id = ${id}`;
+  }
     db.all(sql, [], (err, rows) => {
       if (err) {
         console.error("Ошибка выборки:", err.message);
