@@ -133,6 +133,6 @@ function deleteProduct(productId) {
 // console.log(await getAll('products'))
 // addQwery2("Разработчик при ложения", 100, "https://media.tenor.com/rW2YcU3S83AAAAAM/enbabyfazball-fish.gif")
 export default getAll
-// update(7, "Рыба репер")
+// update(8, "Рыба трезвеник")
 // deleteProduct(9)
 // console.log(await getAll('products'))
