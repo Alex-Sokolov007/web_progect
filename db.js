@@ -2,14 +2,16 @@ import  sqlite3  from  'sqlite3'
 
 const db = new sqlite3.Database("shop.db")
 
-function createTable() {
-  const sql = `
-    CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      sure_name TEXT NOT NULL,
-      phone INTEGER
-    );
+class DB{
+
+  createTable() {
+    const sql = `
+      CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        sure_name TEXT NOT NULL,
+        phone INTEGER
+      );
   `
 
   db.run(sql, function (err) {
@@ -21,7 +23,7 @@ function createTable() {
   })
 }
 
-function createTable2() {
+createTable2() {
   const sql = `
     CREATE TABLE IF NOT EXISTS products (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,7 +42,7 @@ function createTable2() {
   })
 }
 
-function addQwery(name, sure_name, phone) {
+addQwery(name, sure_name, phone) {
   const sql = `
     INSERT INTO users (name, sure_name, phone)
     VALUES (?, ?, ?)
@@ -55,7 +57,7 @@ function addQwery(name, sure_name, phone) {
   });
 }
 
-function addQwery2(name, prise, image) {
+add_producte(name, prise, image) {
   const sql = `
     INSERT INTO products (name, prise, image)
     VALUES (?, ?, ?)
@@ -70,7 +72,7 @@ function addQwery2(name, prise, image) {
   });
 }
 
-async function getAll(table_name = 'users', id = null) {
+async getAll(table_name = 'users', id = null) {
   return new Promise((resolve, reject) => {
   let sql = ''
   if(id == null){
@@ -90,14 +92,14 @@ async function getAll(table_name = 'users', id = null) {
   });
 }
 
-function update(productId, imageUrl) {
+update_product_name(productId, name) {
   const sql = `
     UPDATE products
     SET name = ?
     WHERE id = ?
   `;
 
-  db.run(sql, [imageUrl, productId], function (err) {
+  db.run(sql, [name, productId], function (err) {
     if (err) {
       console.error("Ошибка изменения image:", err.message);
     } else if (this.changes === 0) {
@@ -108,7 +110,7 @@ function update(productId, imageUrl) {
   });
 }
 
-function deleteProduct(productId) {
+deleteProduct(productId) {
   const sql = `
     DELETE FROM products
     WHERE id = ?
@@ -124,7 +126,9 @@ function deleteProduct(productId) {
     }
   });
 }
+}
 
+const d_b = new DB
 // createTable2()
 // addQwery('Иван', "Золо", 88005553535)
 // addQwery2('Рыба прилипала', 480, 'https://media.tenor.com/4MkvKNJCjicAAAAM/fish-sucker.gif')
@@ -132,7 +136,7 @@ function deleteProduct(productId) {
 
 // console.log(await getAll('products'))
 // addQwery2("Разработчик при ложения", 100, "https://media.tenor.com/rW2YcU3S83AAAAAM/enbabyfazball-fish.gif")
-export default getAll
+export default d_b
 // update(8, "Рыба трезвеник")
 // deleteProduct(9)
 // console.log(await getAll('products'))

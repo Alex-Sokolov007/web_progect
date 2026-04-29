@@ -1,6 +1,6 @@
 import express from "express"
 import { app, PORT } from "../config.js"
-import getAll from "../db.js"
+import d_b from "../db.js"
 
 class Login_controler{
     async get1(req, res){

@@ -1,11 +1,11 @@
 import express from "express"
 import { app, PORT } from "../config.js"
-import getAll from "../db.js"
+import d_b from "../db.js"
 
 class Item_controler{
     async get1(req, res){
         const id = req.params.id
-        const data_db = await getAll("products", id)
+        const data_db = await d_b.getAll("products", id)
         console.log(data_db)
         res.render('item', data_db[0])
     }
