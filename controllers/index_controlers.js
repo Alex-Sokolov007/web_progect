@@ -1,12 +1,12 @@
 import express from "express"
-import { app, PORT } from "../config.js"
-import d_b from "../db.js"
+import { app, PORT } from "../config/config.js"
+import d_b from "../config/db.js"
 import { match } from "path-to-regexp"
 
 
 class Index_controler{
     async rendering_page(req, res){
-        const data_db = await d_b.getAll("products")
+        const data_db = await d_b.get_data("product")
         console.log(data_db)
         console.log(data_db.length)
         const data = {
@@ -19,8 +19,8 @@ class Index_controler{
         for(let i=0; i<data_db.length; i++){
             data.name.push(data_db[i].name)
             data.prise.push(data_db[i].prise)
-            data.img.push(data_db[i].image)
-            data.id.push(data_db[i].id)
+            data.img.push(data_db[i].img)
+            data.id.push(data_db[i].id_product)
         }
         
         res.render("index", data)

@@ -8,50 +8,43 @@
   <link rel="stylesheet" href="/styles/basket.css" />
 </head>
 <body>
-
+    <% let sum = 0 %>
     <%- include('blocks/header') -%>
 
   <main class="main">
     <section class="cart">
+        <h3>Ваша корзина <%= user.name %> <%= user.otc %></h3>
+
       <div class="container">
-        <h3>Ваша корзина <%= name %></h3>
+          
+              <div class="cart-list">
+                <!-- Товар 1 -->
 
-        <div class="cart-list">
-          <!-- Товар 1 -->
-          <div class="cart-item">
-            <img src="https://via.placeholder.com/120" alt="Товар 1" />
-            <div class="cart-info">
-              <h4>Товар 1</h4>
-              <p class="price">999 ₽</p>
-              <div class="qty">
-                <button class="qty-btn">−</button>
-                <span class="qty-value">1</span>
-                <button class="qty-btn">+</button>
-              </div>
-            </div>
-            <button class="btn remove-btn">Удалить</button>
-          </div>
-
-          <!-- Товар 2 -->
-          <div class="cart-item">
-            <img src="https://via.placeholder.com/120" alt="Товар 2" />
-            <div class="cart-info">
-              <h4>Товар 2</h4>
-              <p class="price">1 499 ₽</p>
-              <div class="qty">
-                <button class="qty-btn">−</button>
-                <span class="qty-value">2</span>
-                <button class="qty-btn">+</button>
-              </div>
-            </div>
-            <button class="btn remove-btn">Удалить</button>
-          </div>
-        </div>
+                <% for(let i = 0; i<len; i++){ %>
+                <div class="cart-item">
+                  <img src="<%= products[i].img %>" alt="Товар 1" />
+                  <div class="cart-info">
+                    <h4><%= products[i].name %></h4>
+                    <p class="price"><%= products[i].prise %> ₽</p>
+                    <div class="qty">
+                      <button class="qty-btn">−</button>
+                      <span class="qty-value"><%= products[i].number %></span>
+                      <button class="qty-btn">+</button>
+                    </div>
+                  </div>
+                  <button class="btn remove-btn">Удалить</button>
+                </div>
+                <% sum += Number(products[i].prise)*Number(products[i].number)
+              } %>
+          
 
         <div class="cart-total">
-          <h4>Итого: <span class="total-amount">3 497 ₽</span></h4>
+          <h4>Итого: <span class="total-amount"><%= sum %>₽</span></h4>
           <button class="btn checkout-btn">Оформить заказ</button>
         </div>
+     
+     
+     
       </div>
     </section>
   </main>

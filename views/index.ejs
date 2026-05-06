@@ -23,23 +23,27 @@
         <h3>Популярные товары</h3>
 
 <div class="product-list">
-
+        <% if (len==0){
+          %>
+          <p>Товаров нету</p><%
+        } 
+        else{ %>
         <% for(i=0; i<len; i++){ %>
           
             <div class="product-card">
               <img src="<%= img[i] %>" alt="Товар 1" />
               <h4><%= name[i] %></h4>
               <p class="price"><%= prise[i] %> ₽</p>
-              <a href="/item/<%= id[i]%>"><button class="btn">Подробности</button></a>
+              <a href="/item/<%=id[i]%>"><button class="btn">Подробности</button></a>
             </div>
-        <% } %>
+        <% }
+        }
+         %>
 </div>  
         
       </div>
     </section>
   </main>
-
-
 
     <%- include('blocks/footer') -%>
 

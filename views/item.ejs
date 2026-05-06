@@ -12,23 +12,29 @@
     <%- include('blocks/header') -%>
 
   <main class="main">
-    <section class="product-detail">
-      <div class="container">
-        <div class="product-card big">
-          <img src="<%= image %>" alt="Товар" />
-          <div class="product-info">
-            <h2><%= name %></h2>
-            
-            <p class="price"><%= prise %> ₽</p>
-            
-            <div class="actions">
-              <button class="btn cart-btn">В корзину</button>
-              <button class="btn fav-btn">В избранное</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                  <% if(id_product != undefined){ %>
+                    <section class="product-detail">
+                      <div class="container">
+                        <div class="product-card big">
+                          <img src="<%= img %>" alt="Товар" />
+                          <div class="product-info">
+                            <h2><%= name %></h2>
+                            
+                            <p class="price"><%= prise %> ₽</p>
+                            
+                            <div class="actions">
+                              <button class="btn cart-btn">В корзину</button>
+                              <button class="btn fav-btn">В избранное</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div><%= Coment %></div>
+                      </div>
+                      
+                    </section>
+                    <% } else { %>
+                      <p>Ошибка, товар не найден</p>
+                      <% } %>
   </main>
 
     <%- include('blocks/footer') -%>
